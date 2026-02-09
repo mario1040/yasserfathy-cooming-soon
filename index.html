@@ -41,6 +41,30 @@
         }
 
         /* ============================================
+           MOUSE TRAIL EFFECT (ADDED)
+           ============================================ */
+        .mouse-trail {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            animation: trailFade 0.6s linear forwards;
+            box-shadow: 0 0 10px rgba(253, 78, 26, 0.2);
+        }
+
+        @keyframes trailFade {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* ============================================
            BACKGROUND ANIMATED ELEMENTS
            ============================================ */
 
@@ -835,12 +859,9 @@
     </style>
 </head>
 <body>
-    <!-- Background Animated Elements -->
     <div class="background-container">
-        <!-- Mouse-Follow Aura -->
         <div class="aura" id="aura"></div>
         
-        <!-- Grainy Texture Overlay -->
         <div class="grain-overlay"></div>
         
         <div class="blob blob-1"></div>
@@ -851,10 +872,8 @@
         <canvas class="particles-canvas" id="particlesCanvas"></canvas>
     </div>
 
-    <!-- Main Content -->
     <div class="wrapper">
         <div class="container">
-            <!-- Left Side - Hero Content -->
             <div class="hero-content">
                 <div class="accent-bar"></div>
                 <h1 class="hero-title">
@@ -869,9 +888,7 @@
                 </p>
             </div>
 
-            <!-- Right Side - Interactive Elements -->
             <div class="interactive-section">
-                <!-- Concentric SVG Circles -->
                 <div class="svg-circles-container" id="svgCircles">
                     <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="circle-1">
                         <circle cx="200" cy="200" r="150" fill="none" stroke="#D4D5DA" stroke-width="1" opacity="0.3"/>
@@ -880,7 +897,6 @@
                     </svg>
                 </div>
                 
-                <!-- GIF Showcase Container -->
                 <div class="gif-wrapper">
                     <div class="gif-container loading" id="gifContainer">
                         <img 
@@ -893,7 +909,6 @@
                     </div>
                 </div>
 
-                <!-- Email Form -->
                 <form class="email-form" id="emailForm" novalidate>
                     <div class="form-group">
                         <label class="form-label">Early Access</label>
@@ -912,7 +927,6 @@
                     </div>
                 </form>
 
-                <!-- Social Icons -->
                 <div class="social-icons">
                     <a href="#" class="social-link" title="Facebook" aria-label="Follow us on Facebook">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -944,6 +958,41 @@
     </div>
 
     <script>
+        /* ============================================
+           MOUSE TRAIL ANIMATION (ADDED)
+           ============================================ */
+        document.addEventListener('mousemove', function(e) {
+            // 1. Create the circle
+            const circle = document.createElement('div');
+            circle.classList.add('mouse-trail');
+            
+            // 2. Set random size (10px to 25px)
+            const size = Math.random() * 15 + 10;
+            circle.style.width = `${size}px`;
+            circle.style.height = `${size}px`;
+            
+            // 3. Set position
+            circle.style.left = `${e.clientX}px`;
+            circle.style.top = `${e.clientY}px`;
+            
+            // 4. Random Colors from theme
+            const colors = [
+                '#FD4E1A', // Orange
+                '#FEB52C', // Yellow
+                '#D4D5DA', // Gray
+                'rgba(253, 78, 26, 0.5)' // Transparent Orange
+            ];
+            circle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            // 5. Add to body
+            document.body.appendChild(circle);
+            
+            // 6. Remove element after animation finishes
+            setTimeout(() => {
+                circle.remove();
+            }, 600);
+        });
+
         /* ============================================
            PARTICLE ANIMATION
            ============================================ */
