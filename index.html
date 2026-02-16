@@ -470,39 +470,39 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     
     <script>
-        // 2. تفعيل الجزيئات (Configuration)
+// 2. تفعيل الجزيئات (إعدادات جديدة أوضح)
         document.addEventListener('DOMContentLoaded', () => {
             particlesJS("particles-js", {
                 "particles": {
                     "number": {
-                        "value": 80,
+                        "value": 60, // قللت العدد سنة عشان لما تكبر متبقاش زحمة
                         "density": { "enable": true, "value_area": 800 }
                     },
-                    "color": { "value": "#D4D5DA" }, // لون النقاط (رمادي فاتح ليناسب تصميمك)
+                    "color": { "value": "#2c3e50" }, // لون غامق وواضح جداً (بدل الفاتح)
                     "shape": {
                         "type": "circle",
                         "stroke": { "width": 0, "color": "#000000" }
                     },
                     "opacity": {
-                        "value": 0.5,
+                        "value": 0.8, // زودت الشفافية عشان تبقى ظاهرة قوي
                         "random": false,
                         "anim": { "enable": false }
                     },
                     "size": {
-                        "value": 3,
-                        "random": true,
+                        "value": 6, // كبرت الحجم (كان 3)
+                        "random": true, // أحجام مختلفة عشان يبقى شكلها حلو
                         "anim": { "enable": false }
                     },
                     "line_linked": {
                         "enable": true,
                         "distance": 150,
-                        "color": "#D4D5DA", // لون الخطوط
-                        "opacity": 0.4,
-                        "width": 1
+                        "color": "#2c3e50", // الخطوط بقت نفس اللون الغامق
+                        "opacity": 0.6, // تقلت الخطوط
+                        "width": 1.5 // عرضت الخطوط شوية
                     },
                     "move": {
                         "enable": true,
-                        "speed": 3, // سرعة الحركة
+                        "speed": 4, // سرعت الحركة سنة بسيطة
                         "direction": "none",
                         "random": false,
                         "straight": false,
@@ -514,12 +514,12 @@
                 "interactivity": {
                     "detect_on": "canvas",
                     "events": {
-                        "onhover": { "enable": true, "mode": "grab" }, // التأثير عند مرور الماوس
+                        "onhover": { "enable": true, "mode": "grab" },
                         "onclick": { "enable": true, "mode": "push" },
                         "resize": true
                     },
                     "modes": {
-                        "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                        "grab": { "distance": 180, "line_linked": { "opacity": 1 } },
                         "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 },
                         "repulse": { "distance": 200, "duration": 0.4 },
                         "push": { "particles_nb": 4 },
@@ -529,7 +529,6 @@
                 "retina_detect": true
             });
         });
-
         // 3. بقية السكربتات الخاصة بالموقع (الماوس، الفورم، إلخ)
         
         // Mouse Trail
